@@ -23,5 +23,6 @@
 
 ```
 yarn global add live-server
+
 live-server
 ```
