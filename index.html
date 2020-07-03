@@ -6,23 +6,37 @@
     <title>Document</title>
   </head>
   <body>
-    <h1 id="name">{{name}}</h1>
+    <div id="app">
+      <h1 id="name">{{name}}</h1>
+      <input v-model="name" />
+      <p>
+        <span>点了</span>
+        {{num}}
+        <span>次俺</span>
+      </p>
+      <button v-on:click="clickme">click me</button>
+    </div>
 
-    <script src="./js/adi-mvvm/observer.js"></script>
-    <script src="./js/adi-mvvm/watcher.js"></script>
-    <script src="./js/adi-mvvm/compile.js"></script>
-    <script src="./js/adi-mvvm/index.js"></script>
+    <script src="./js/observer.js"></script>
+    <script src="./js/watcher.js"></script>
+    <script src="./js/compile.js"></script>
+    <script src="./js/index.js"></script>
     <script>
-      const el = document.querySelector("#name");
+      const el = document.querySelector("#app");
       const data = {
-        name: "adi",
+        name: "哇咔咔是adi呀!",
+        num: 0,
       };
-      const vm = new adiMvvm({ el, data });
-
-      window.setTimeout(() => {
-        // vm.data.name = "change";
-        vm.name = "change new";
-      }, 2000);
+      const vm = new adiMvvm({
+        el,
+        data,
+        methods: {
+          clickme: function () {
+            console.log("this", this);
+            this.num += 1;
+          },
+        },
+      });
     </script>
   </body>
 </html>

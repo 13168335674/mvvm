@@ -1,7 +1,8 @@
-function adiMvvm({ el, data }) {
+function adiMvvm({ el, data, methods }) {
   const that = this;
   this.vm = this;
   this.data = data;
+  this.methods = methods;
   observe(data);
   this.proxyKeys();
   new Compile(el, this);
