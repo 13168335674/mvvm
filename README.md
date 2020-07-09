@@ -30,3 +30,79 @@ live-server
 
 - [vue 源码查看工具](https://sourcegraph.com/github.com/vuejs/vue@dev/-/tree/src/core/instance)
 - [observer 分析](https://github.com/creeperyang/blog/issues/45)
+- [vue 技术揭秘(电子书)](https://ustbhuangyi.github.io/vue-analysis/)
+- [简版 mvvm(github)](https://github.com/DMQ/mvvm)
+
+# 彩蛋
+
+## vue(v3) Proxy 实现数据监听
+
+```js
+const rawToReactive = new WeakMap();
+const reactiveToRaw = new WeakMap();
+
+/**
+ * utils
+ * */
+function isObject(val) {
+  return typeof val === "object";
+}
+function hasOwn(val, key) {
+  const hasOwnProperty = Object.prototype.hasOwnProperty;
+  return hasOwnProperty.call(val, key);
+}
+
+/**
+ * traps
+ * */
+// get
+function createGetter() {
+  return function (target, key, receiver) {
+    const res = Reflect.get(target, key, receiver);
+    return isObject(res) ? reactive(res) : res;
+  };
+}
+// set
+function set(target, key, value, receiver) {
+  const hadKey = hasOwn(target, key);
+  const oldValue = target[key];
+  value = reactiveToRaw.get(value) || value;
+  const res = Reflect.set(target, key, value, receiver);
+  if (!hadKey || value !== oldValue) {
+    console.log("tigger...");
+  }
+  return res;
+}
+// handle
+const mutableHandlers = {
+  get: createGetter(),
+  set: set,
+};
+// create reactive object
+function createReactiveObject(target, toProxy, toRaw, baseHandlers) {
+  let observed = toProxy.get(target);
+  // target 生成过 observed，返回 observed
+  if (observed !== void 0) {
+    return observed;
+  }
+  // target 是 observed, 返回 target
+  if (toRaw.has(target)) {
+    return target;
+  }
+  observed = new Proxy(target, baseHandlers);
+  toProxy.set(target, observed);
+  toRaw.set(observed, target);
+  return observed;
+}
+// enter
+function reactive(target) {
+  return createReactiveObject(
+    target,
+    rawToReactive,
+    reactiveToRaw,
+    mutableHandlers
+  );
+}
+```
+
+> so easy ~ 看完了记得去敲一敲 ya !
