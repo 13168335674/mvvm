@@ -1,9 +1,9 @@
 function adiMvvm({ el, data, methods }) {
   const that = this;
   this.vm = this;
-  this.data = data;
+  this.data = typeof data === "function" ? data.call(this) : data || {};
   this.methods = methods;
-  observe(data);
+  observe(this.data);
   this.proxyKeys();
   new Compile(el, this);
   return this;
@@ -24,4 +24,6 @@ adiMvvm.prototype = {
       });
     });
   },
+  $del: del,
+  $set: set,
 };

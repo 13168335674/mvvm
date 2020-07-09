@@ -14,26 +14,43 @@
         {{num}}
         <span>次俺</span>
       </p>
+      <p>
+        <span>arr:</span>
+        <span>{{arr}}</span>
+      </p>
+      <p>{{me.sex}}</p>
       <button v-on:click="clickme">click me</button>
     </div>
 
+    <script src="./js/helper.js"></script>
+    <script src="./js/dep.js"></script>
     <script src="./js/observer.js"></script>
     <script src="./js/watcher.js"></script>
     <script src="./js/compile.js"></script>
+    <script src="./js/del.js"></script>
+    <script src="./js/set.js"></script>
     <script src="./js/index.js"></script>
     <script>
       const el = document.querySelector("#app");
-      const data = {
-        name: "哇咔咔是adi呀!",
-        num: 0,
-      };
       const vm = new adiMvvm({
         el,
-        data,
+        data: () => {
+          return {
+            name: "哇咔咔是adi呀!",
+            num: 0,
+            arr: [],
+            me: {
+              name: "adi",
+              age: "24",
+            },
+          };
+        },
         methods: {
           clickme: function () {
-            console.log("this", this);
             this.num += 1;
+            this.arr.push(this.num);
+            this.$del(this.me, "age");
+            this.$set(this.me, "sex", "boy");
           },
         },
       });

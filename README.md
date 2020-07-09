@@ -10,14 +10,11 @@
 # 进展
 
 - [x] 监听对象变化
-- [ ] 监听数组变化
-- [ ] 计算属性 computed
-- [x] watch 库
-- [ ] 动态数据绑定
-- [ ] v-if 条件渲染
-- [ ] v-on 事件绑定
-- [ ] v-model 双向数据绑定
-- [ ] 生命周期(面向切面编程)
+- [x] 监听数组变化
+- [x] v-on 事件绑定
+- [x] v-model 双向数据绑定
+- [x] 实现\$del
+- [x] 实现\$set
 
 # 如何启动
 
@@ -28,3 +25,8 @@ live-server
 ```
 
 ![demo.png](https://upload-images.jianshu.io/upload_images/4985324-b84236f5a9ea26ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+# 推荐资料
+
+- [vue 源码查看工具](https://sourcegraph.com/github.com/vuejs/vue@dev/-/tree/src/core/instance)
+- [observer 分析](https://github.com/creeperyang/blog/issues/45)
