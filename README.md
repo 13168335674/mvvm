@@ -13,8 +13,9 @@
 - [x] 监听数组变化
 - [x] v-on 事件绑定
 - [x] v-model 双向数据绑定
-- [x] 实现\$del
-- [x] 实现\$set
+- [x] 实现 \$del
+- [x] 实现 \$set
+- [x] 实现 \$nextTick
 
 # 如何启动
 
@@ -33,6 +34,7 @@ live-server
 - [vue 源码查看工具](https://sourcegraph.com/github.com/vuejs/vue@dev/-/tree/src/core/instance)
 - [observer 分析](https://github.com/creeperyang/blog/issues/45)
 - [vue 技术揭秘(电子书)](https://ustbhuangyi.github.io/vue-analysis/)
+- [vue 源码分析](https://github.com/NuoHui/fe-note/tree/master/docs/vue)
 - [简版 mvvm(github)](https://github.com/DMQ/mvvm)
 
 # 彩蛋

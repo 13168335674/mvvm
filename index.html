@@ -29,6 +29,7 @@
     <script src="./js/compile.js"></script>
     <script src="./js/del.js"></script>
     <script src="./js/set.js"></script>
+    <script src="./js/next-tick.js"></script>
     <script src="./js/index.js"></script>
     <script>
       const el = document.querySelector("#app");
@@ -51,6 +52,10 @@
             this.arr.push(this.num);
             this.$del(this.me, "age");
             this.$set(this.me, "sex", "boy");
+            this.$nextTick(() => {
+              console.log("nextTick");
+            });
+            console.log("sync");
           },
         },
       });

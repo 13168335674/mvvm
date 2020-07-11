@@ -26,4 +26,5 @@ adiMvvm.prototype = {
   },
   $del: del,
   $set: set,
+  $nextTick: nextTick,
 };
