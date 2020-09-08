@@ -1,5 +1,5 @@
 let id = 0;
-function Dep(key) {
+export function Dep(key) {
   this.id = id++;
   this.name = key;
   this.subs = [];
@@ -15,5 +15,5 @@ Dep.prototype = {
     this.subs.forEach((sub) => {
       sub.update();
     });
-  },
+  }
 };

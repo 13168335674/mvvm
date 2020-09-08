@@ -22,7 +22,7 @@
       <button v-on:click="clickme">click me</button>
     </div>
 
-    <script src="./js/helper.js"></script>
+    <!-- <script src="./js/helper.js"></script>
     <script src="./js/dep.js"></script>
     <script src="./js/observer.js"></script>
     <script src="./js/watcher.js"></script>
@@ -30,7 +30,8 @@
     <script src="./js/del.js"></script>
     <script src="./js/set.js"></script>
     <script src="./js/next-tick.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/index.js"></script> -->
+    <script src="./dist/bundle.js"></script>
     <script>
       const el = document.querySelector("#app");
       const vm = new adiMvvm({
@@ -42,8 +43,8 @@
             arr: [],
             me: {
               name: "adi",
-              age: "24",
-            },
+              age: "24"
+            }
           };
         },
         methods: {
@@ -56,8 +57,8 @@
               console.log("nextTick");
             });
             console.log("sync");
-          },
-        },
+          }
+        }
       });
     </script>
   </body>

@@ -2,7 +2,7 @@
  * @Author: ADI
  * @Date: 2020-07-10 09:59:20
  * @LastEditors: ADI
- * @LastEditTime: 2020-07-10 16:54:46
+ * @LastEditTime: 2020-09-08 16:02:59
  */
 /**
  * utils
@@ -39,7 +39,7 @@ if (typeof Promise !== "undefined") {
   const observer = new MutationObserver(flushCallbacks);
   const textNode = document.createTextNode(String(counter));
   observer.observe(textNode, {
-    characterData: true,
+    characterData: true
   });
   timerFunc = () => {
     counter = (counter + 1) % 2;
@@ -56,7 +56,7 @@ if (typeof Promise !== "undefined") {
   };
 }
 
-function nextTick(cb, ctx) {
+export function nextTick(cb, ctx) {
   let _resolve;
   callbacks.push(() => {
     if (cb) {

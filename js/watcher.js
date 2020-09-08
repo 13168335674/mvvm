@@ -1,5 +1,7 @@
+import { Dep } from "./dep";
+
 let uid = 0;
-function Watcher(vm, expOrFn, cb) {
+export function Watcher(vm, expOrFn, cb) {
   this.uid = uid++;
   this.cb = cb;
   this.vm = vm;

@@ -1,4 +1,7 @@
-function Observer(data) {
+import { Dep } from "./dep";
+import { hasOwn, def } from "./helper";
+
+export function Observer(data) {
   if (!data || typeof data !== "object") {
     return;
   }
@@ -16,7 +19,7 @@ function Observer(data) {
   }
 }
 
-function observe(value) {
+export function observe(value) {
   if (typeof value !== "object") return;
   let ob;
   if (hasOwn(value, "__ob__") && value.__ob__ instanceof Observer) {
@@ -27,7 +30,7 @@ function observe(value) {
   return ob;
 }
 
-function defineReactive(data, key, val) {
+export function defineReactive(data, key, val) {
   const dep = new Dep(key);
   let childOb = observe(val);
   Object.defineProperty(data, key, {
@@ -50,7 +53,7 @@ function defineReactive(data, key, val) {
       val = newVal;
       observe(val);
       dep.notify();
-    },
+    }
   });
 }
 
@@ -82,7 +85,7 @@ function createArrayPrototype() {
     "unshift",
     "splice",
     "sort",
-    "reverse",
+    "reverse"
   ];
   methodsToPatch.forEach((method) => {
     const oriiginal = arrayProto[method];

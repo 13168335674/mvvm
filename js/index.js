@@ -1,3 +1,9 @@
+import { Compile } from "./compile";
+import { observe } from "./observer";
+import { del } from "./del";
+import { set } from "./set";
+import { nextTick } from "./next-tick";
+
 function adiMvvm({ el, data, methods }) {
   const that = this;
   this.vm = this;
@@ -11,7 +17,7 @@ function adiMvvm({ el, data, methods }) {
 adiMvvm.prototype = {
   proxyKeys() {
     const that = this;
-    Object.keys(this.data).forEach((key) => {
+    Object.keys(this.data).forEach(key => {
       Object.defineProperty(this, key, {
         enumerable: true,
         configurable: true,
@@ -28,3 +34,5 @@ adiMvvm.prototype = {
   $set: set,
   $nextTick: nextTick,
 };
+
+window.adiMvvm = adiMvvm;

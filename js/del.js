@@ -2,9 +2,11 @@
  * @Author: ADI
  * @Date: 2020-07-08 17:42:46
  * @LastEditors: ADI
- * @LastEditTime: 2020-07-09 10:06:13
+ * @LastEditTime: 2020-09-08 16:01:09
  */
-function del(target, key) {
+import { hasOwn } from "./helper";
+
+export function del(target, key) {
   if (typeof target !== "object") {
     return;
   }
@@ -18,7 +20,6 @@ function del(target, key) {
       "Avoid deleting properties on a Vue instance or its root $data " +
         "- just set it to null."
     );
-    return;
   }
   // 如果属性不在对象上, 不做处理
   if (!hasOwn(target, key)) {

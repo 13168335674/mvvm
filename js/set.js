@@ -1,4 +1,6 @@
-function set(target, key, val) {
+import { defineReactive } from "./observer";
+
+export function set(target, key, val) {
   if (typeof target !== "object") {
     throw Error(
       `Cannot set reactive property on undefined, null, or primitive value: ${target}`
